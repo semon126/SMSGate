@@ -43,7 +43,6 @@ public class ClientTestCMPPEndPoint {
 
 
 		client.setMaxChannels((short)1);
-		client.setWindows((short)16);
 		client.setVersion((short)0x20);
 		client.setRetryWaitTimeSec((short)30);
 		client.setUseSSL(false);
@@ -66,7 +65,6 @@ public class ClientTestCMPPEndPoint {
 //		client1.setProxy("http://127.0.0.1:1080");
 
 		client1.setMaxChannels((short)1);
-		client1.setWindows((short)16);
 		client1.setVersion((short)0x30);
 		client1.setRetryWaitTimeSec((short)30);
 		client1.setUseSSL(false);

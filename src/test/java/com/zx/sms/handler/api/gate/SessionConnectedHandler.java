@@ -92,8 +92,8 @@ public class SessionConnectedHandler extends AbstractBusinessHandler {
 						CmppSubmitRequestMessage msg = new CmppSubmitRequestMessage();
 						msg.setDestterminalId(String.valueOf(System.currentTimeMillis()/1000));
 						msg.setLinkID("0000");
-						msg.setMsgContent("======1 ==msg.setMsgContent(new SmsMmsNotetMsgContent(new SmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\"http://www.baidu.com/abc/sfd\",50*1024));======"+System.currentTimeMillis());
-						msg.setRegisteredDelivery((short)1);
+						msg.setMsgContent("21==21==ｋ====1==ms21======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd123456789021======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd1234567890g.setMsgContent(newSmsMmsNotetMsgContent(newSmsMms21======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMms21======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd123456789021======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd123456789021======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd123456789021======1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd1234567890NotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd1234567890NotificationMessage(\\\"http://www.baidu.comificationMessage(\\\"http://www.baidu.com/abc/sfd1234567890====1==msg.setMsgContent(newSmsMmsNotetMsgContent(newSmsMmsNotificationMessage(\"http://www.baidu.comificationMessage(\"http://www.baidu.com/abc/sfd1234567890");
+						msg.setRegisteredDelivery((short)0);
 						msg.setMsgid(new MsgId());
 						msg.setServiceId("10086");
 						msg.setSrcId("1069039129");
@@ -128,7 +128,7 @@ public class SessionConnectedHandler extends AbstractBusinessHandler {
 //							ChannelFuture future = ctx.writeAndFlush( );
 							cnt--;
 							tmptotal.decrementAndGet();
-							if(chfuture==null)chfuture.sync();
+							if(chfuture!=null)chfuture.sync();
 							
 							if(futures==null) continue;
 							try{

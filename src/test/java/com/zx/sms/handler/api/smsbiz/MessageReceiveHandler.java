@@ -69,6 +69,17 @@ public class MessageReceiveHandler extends AbstractBusinessHandler {
 
 		if (msg instanceof CmppDeliverRequestMessage) {
 			CmppDeliverRequestMessage e = (CmppDeliverRequestMessage) msg;
+			
+			if(e.getFragments()!=null) {
+				//长短信会带有片断
+				for(CmppDeliverRequestMessage frag:e.getFragments()) {
+					CmppDeliverResponseMessage responseMessage = new CmppDeliverResponseMessage(frag.getHeader().getSequenceId());
+					responseMessage.setResult(0);
+					responseMessage.setMsgId(frag.getMsgId());
+					ctx.channel().write(responseMessage);
+				}
+			}
+			
 			CmppDeliverResponseMessage responseMessage = new CmppDeliverResponseMessage(e.getHeader().getSequenceId());
 			responseMessage.setResult(0);
 			responseMessage.setMsgId(e.getMsgId());
@@ -83,10 +94,21 @@ public class MessageReceiveHandler extends AbstractBusinessHandler {
 			CmppDeliverResponseMessage e = (CmppDeliverResponseMessage) msg;
 
 		} else if (msg instanceof CmppSubmitRequestMessage) {
+			//接收到 CmppSubmitRequestMessage 消息
 			CmppSubmitRequestMessage e = (CmppSubmitRequestMessage) msg;
+			
+			if(e.getFragments()!=null) {
+				//长短信会可能带有片断，每个片断都要回复一个response
+				for(CmppSubmitRequestMessage frag:e.getFragments()) {
+					CmppSubmitResponseMessage responseMessage = new CmppSubmitResponseMessage(frag.getHeader().getSequenceId());
+					responseMessage.setResult(0);
+					ctx.channel().write(responseMessage);
+				}
+			}
+			
 			final CmppSubmitResponseMessage resp = new CmppSubmitResponseMessage(e.getHeader().getSequenceId());
-//			resp.setResult(RandomUtils.nextInt()%2 <1 ? 8 : 0);
 			resp.setResult(0);
+			
 			ctx.channel().writeAndFlush(resp).addListener(new GenericFutureListener() {
 				@Override
 				public void operationComplete(Future future) throws Exception {
